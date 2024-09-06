@@ -18,6 +18,7 @@
 
     import {onMount} from "svelte";
     import type {ConnectFourState, MatchIdentifier} from "./aiarena-types";
+    import ConnectFour from "./ConnectFour.svelte";
 
     let connection: WebSocket
     let authenticated = false
@@ -125,7 +126,7 @@
         <button on:click={authenticate} >Go for it</button>
     {/if}
 
-    <div class="last-message">
-        {lastMessage}
-    </div>
+    {#if gameState != null}
+        <ConnectFour data={gameState} humanPlayer={false} />
+    {/if}
 </div>
