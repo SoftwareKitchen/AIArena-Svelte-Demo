@@ -1,4 +1,20 @@
 <script lang="ts">
+    /*
+    Start a game:
+    POST https://ai-arena.de/api/
+    {
+        "game": "Connect Four",
+        "config": {},
+        "players": [
+            {"type": "player"},
+            {"type": "random"}
+        ],
+        "numGames": 15
+    }
+    Kill an existing game
+    DELETE https://ai-arena.de/api/
+
+     */
 
     import {onMount} from "svelte";
     import type {ConnectFourState, MatchIdentifier} from "./aiarena-types";
