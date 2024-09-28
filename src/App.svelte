@@ -26,6 +26,7 @@
     let lastMessage: string | null = null
     let inGame = false
     let gameState: ConnectFourState | null = null
+    let currentMatchId: string | null = null
 
     onMount(() => {
         connection = new WebSocket("wss://ai-arena.de/api/live")
@@ -46,6 +47,7 @@
             }
         ))
         inGame = true
+        currentMatchId = id
     }
 
     function searchForGame(){
@@ -97,6 +99,7 @@
                 connection.send(JSON.stringify(
                     {
                         action: "action",
+                        match: currentMatchId ? currentMatchId : "da-da-dam",
                         payload: {
                             col: i
                         }
